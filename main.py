@@ -6,7 +6,7 @@ from fileParser import *
 
 # constants
 DRIVER_PATH = "driver\\chromedriver.exe"  # update driver when obsolete
-DOWNLOAD_PATH = "\\files"
+DOWNLOAD_PATH = "files\\"
 BASE_URL = "http://www.cs.xxxxxxx.ro/studenti/lista-studentilor/"  # censored website name
 
 # driver init
@@ -28,7 +28,7 @@ def dictDownloadV5(dic):  # mashed dictD and fDown, why were they split?
     """
     for grTitle in dic:
         request = req.get(dic[grTitle], allow_redirects=True)
-        path = "G:\\_Local\\Programming\\Python\\API's\\stdList\\files\\" + grTitle
+        path = "files\\" + grTitle
         with open(path, 'wb') as f:
             f.write(request.content)
 
@@ -66,7 +66,7 @@ def printResults(inDict):  # print results from given dict
     """
     students = 0  # contor de studenti
     for gTitle in inDict:
-        fPath = 'files/' + gTitle
+        fPath = 'files\\' + gTitle
         print('grupa ' + gTitle.split()[1])
         print(str(cellToInt(xlsxParse(fPath))) + ' studenti\n')
         students += cellToInt(xlsxParse(fPath))
